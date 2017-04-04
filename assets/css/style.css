@@ -1,6 +1,10 @@
 
+body{
+  text-align: center;
+}
+
 table{
-  /*border-style: ridge;*/
+  margin: auto;
 }
 
 td{
