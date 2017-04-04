@@ -10,3 +10,5 @@ El siguiente programa simula el juego de buscaminas.
 <li> el boton reiniciar, reinicia el juego en cualquier momento </li>
 <h4> Segundo alcance: </h4>
 <li> al hacer click fuera de la tabla se muestra mensaje </li>
+<strong>En este momento: </strong>
+<li> Sólo se crea la tabla dinámica</li>
