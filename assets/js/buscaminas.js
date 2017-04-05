@@ -17,20 +17,14 @@ function juegoNuevo(){
     // Creación de columnas
     for (var j = 0; j < n; j++) {
       var columna = document.createElement("td");
-      if (j==0 && i==0) {
-        columna.setAttribute("elemento","bomba");
-        fila.appendChild(columna);
-      } else if((j==0 && i==1)||(j==1 && i==0)){
-        columna.setAttribute("elemento","numero");
-        fila.appendChild(columna);
-      } else {
         columna.setAttribute("elemento","vacio");
+        columna.addEventListener("click",tipoElemento);
         fila.appendChild(columna);
-      }
     }
     tabla.appendChild(fila);
   }
   body.insertBefore(tabla, seccionReinicio);
+  bombasAleatorias(n);
 }
 
 
@@ -42,5 +36,44 @@ function valorDeN(){
   }else {
     alert("Recuerda n=>2");
     return valorDeN();
+  }
+}
+
+
+// Creación de bombas Aleatorias
+function bombasAleatorias(n){
+  var cuadro = document.getElementsByTagName('td');
+  var tds = cuadro.length;
+  var numeroBombas = n-1; //nivel fácil bombas = n-1 : Math.floor(tds/(n+1))
+  for (var i = 0; i < numeroBombas; i++) {
+    do {
+      var lugarAleatorio = Math.floor(Math.random()*tds);
+    } while (cuadro[lugarAleatorio].getAttribute("elemento") != "vacio");
+    cuadro[lugarAleatorio].setAttribute("elemento","bomba");
+  }
+}
+
+
+// Obteniendo el tipo de elemento que va en el cuadro
+// Aplicandole el efecto requerido
+function tipoElemento(){
+  var elemento = this.getAttribute("elemento");
+  // noContarClicks();
+  switch (elemento) {
+    case "bomba":
+      var imagen= document.createElement("img");
+      imagen.setAttribute("src", "assets/img/bomba.png");
+      imagen.setAttribute("height","45px");
+      imagen.setAttribute("width", "41px");
+      this.appendChild(imagen);
+      // bloqueoDePantalla();
+      break;
+    case "numero":
+      this.textContent = 1;
+      break;
+    case "vacio":
+      this.style.backgroundColor = "#E0ECF8";
+      break;
+    default:
   }
 }
