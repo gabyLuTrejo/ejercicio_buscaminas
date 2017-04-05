@@ -12,6 +12,7 @@ El siguiente programa simula el juego de buscaminas.
 <li> Al hacer click fuera de la tabla se muestra mensaje </li>
 <h5>En este momento: </h5>
 <li> Se crea la tabla dinámica de "nxn" con n=>2 </li>
-<li> Se agrega a la tabla "n-1" bombas de forma aleatoria</li>
+<li> Se puede elegir el nivel de dificultad </li>
+<li> Se agregan bombas de forma aleatoria segun la dificultad </li>
 <li> Las celdas vacias cambian de color al hacerles click </li>
 <li> Las celdas con bomba muestran una bomba al hacerles click </li>

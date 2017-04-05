@@ -44,7 +44,22 @@ function valorDeN(){
 function bombasAleatorias(n){
   var cuadro = document.getElementsByTagName('td');
   var tds = cuadro.length;
-  var numeroBombas = n-1; //nivel fácil bombas = n-1 : Math.floor(tds/(n+1))
+  var dificultad = prompt("Nivel de dificultad:\n1 = fácil\n2 = medio\n3 = dificil");
+  switch (dificultad) {
+    case "1":
+      var numeroBombas = n-1;
+      break;
+    case "2":
+      var numeroBombas = 2*n-2;
+      break;
+    case "3":
+      var numeroBombas = tds-n+1;  //3,7,
+      break;
+    default:
+      alert("Debes introducir un número (del 1 al 3)");
+      bombasAleatorias(n);
+      break;
+  }
   for (var i = 0; i < numeroBombas; i++) {
     do {
       var lugarAleatorio = Math.floor(Math.random()*tds);
