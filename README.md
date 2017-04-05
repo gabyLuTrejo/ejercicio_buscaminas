@@ -16,3 +16,4 @@ El siguiente programa simula el juego de buscaminas.
 <li> Se agregan bombas de forma aleatoria segun la dificultad </li>
 <li> Las celdas vacias cambian de color al hacerles click </li>
 <li> Las celdas con bomba muestran una bomba al hacerles click, y se bloquea la funcionalidad del juego </li>
+<li> El boton reiniciar, reinicia el juego en cualquier momento </li>

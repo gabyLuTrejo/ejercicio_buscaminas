@@ -7,6 +7,9 @@ var cuadro = document.getElementsByTagName('td');
 // Generando tabla dinámica con Boton
 comenzarJuego.addEventListener("click", juegoNuevo);
 
+// Agregando función "click" al boton de reinicio
+botonReinicio.addEventListener("click", iniciarJuego);
+
 // Tabla Dinámica
 function juegoNuevo(){
   var n = valorDeN();
@@ -28,7 +31,6 @@ function juegoNuevo(){
   bombasAleatorias(n);
 }
 
-
 // Obtención de valor de "n"
 function valorDeN(){
   var n = Number(prompt("El tamaño de tu tabla es 'nxn' \n Con 'n=>2' ¿Cuánto vale 'n'? "));
@@ -39,7 +41,6 @@ function valorDeN(){
     return valorDeN();
   }
 }
-
 
 // Creación de bombas Aleatorias dependiendo Dificultad
 function bombasAleatorias(n){
@@ -67,7 +68,6 @@ function bombasAleatorias(n){
     cuadro[lugarAleatorio].setAttribute("elemento","bomba");
   }
 }
-
 
 // Obteniendo el tipo de elemento que va en el cuadro
 // Aplicandole el efecto requerido
@@ -101,4 +101,13 @@ function bloqueoDePantalla(){
     // cuadro[i].addEventListener("click", noContarClicks);
   }
   alert("¡ESTO HA EXPLOATADO!");
+}
+
+// Función de inicialización del juego
+function iniciarJuego(){
+  for (var i = 0, tds=cuadro.length; i < tds; i++) {
+    cuadro[i].addEventListener("click",tipoElemento);
+    cuadro[i].textContent = "";
+    cuadro[i].style.backgroundColor = "white";
+  }
 }
