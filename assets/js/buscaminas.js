@@ -2,6 +2,7 @@
 var botonReinicio = document.getElementById("reiniciarJuego");
 var body = document.body; //clickZona
 var comenzarJuego = document.getElementById("comenzarJuego");
+var cuadro = document.getElementsByTagName('td');
 
 // Generando tabla dinámica con Boton
 comenzarJuego.addEventListener("click", juegoNuevo);
@@ -40,9 +41,8 @@ function valorDeN(){
 }
 
 
-// Creación de bombas Aleatorias
+// Creación de bombas Aleatorias dependiendo Dificultad
 function bombasAleatorias(n){
-  var cuadro = document.getElementsByTagName('td');
   var tds = cuadro.length;
   var dificultad = prompt("Nivel de dificultad:\n1 = fácil\n2 = medio\n3 = dificil");
   switch (dificultad) {
@@ -53,7 +53,7 @@ function bombasAleatorias(n){
       var numeroBombas = 2*n-2;
       break;
     case "3":
-      var numeroBombas = tds-n+1;  //3,7,
+      var numeroBombas = tds-n+1;
       break;
     default:
       alert("Debes introducir un número (del 1 al 3)");
@@ -81,7 +81,7 @@ function tipoElemento(){
       imagen.setAttribute("height","45px");
       imagen.setAttribute("width", "41px");
       this.appendChild(imagen);
-      // bloqueoDePantalla();
+      bloqueoDePantalla();
       break;
     case "numero":
       this.textContent = 1;
@@ -91,4 +91,14 @@ function tipoElemento(){
       break;
     default:
   }
+}
+
+// Se quitan las funciones "click" (bloqueoDePantalla)
+// Se evita que active la función "clickAfueraDeTabla"
+function bloqueoDePantalla(){
+  for (var i = 0, tds=cuadro.length; i < tds; i++) {
+    cuadro[i].removeEventListener("click",tipoElemento);
+    // cuadro[i].addEventListener("click", noContarClicks);
+  }
+  alert("¡ESTO HA EXPLOATADO!");
 }
